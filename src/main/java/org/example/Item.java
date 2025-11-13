@@ -10,23 +10,31 @@ public  class Item {
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public double getBasePrice() {
+
         return basePrice;
     }
 
     public void setBasePrice(double basePrice) {
+
         this.basePrice = basePrice;
     }
     public double calculatePrice() {
         return basePrice;
 
+    }
+    @Override
+    public String toString() {
+        return name + " - $" + String.format("%.2f", calculatePrice());
     }
 }
 
