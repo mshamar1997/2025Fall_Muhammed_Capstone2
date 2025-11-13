@@ -1,15 +1,15 @@
 package org.example;
 
-public enum DrinkType {
-    SODA("Soda", 1.50),
-    WATER("Water", 1.00),
-    MILKSHAKE("Milk Shake", 2.00),
-    ROOT_BEER("Root Beer", 1.50);
+public enum SideType {
+    FRIES("Fries",2.00),
+    CHIPS("Chips",1.50),
+    COOKIE("Cookie",1.25),
+    BROWNIE("Brownie",1.75);
 
     private final String displayName;
     private final double basePrice;
 
-    DrinkType(String displayName, double basePrice){
+     SideType(String displayName, double basePrice) {
         this.displayName = displayName;
         this.basePrice = basePrice;
     }

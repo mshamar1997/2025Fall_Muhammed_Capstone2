@@ -13,7 +13,7 @@ public enum ToppingType {
     PEANUTS("Peanuts", .50, false),
     GUMMY_BEARS("gummyBears", .50, false ),
     WHIPPED_CREAM("Whipped Cream", .50, false),
-    CHERRY("Cherry", .50, false);
+    CHOCOLATE_CHIPS("Chocolate Chips", .50, false);
 
     private final String displayName;
     private final double price;

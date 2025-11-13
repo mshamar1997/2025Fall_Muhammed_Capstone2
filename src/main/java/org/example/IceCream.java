@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IceCream extends Item{
@@ -101,21 +102,24 @@ public class IceCream extends Item{
                 "\nspecialOptions: " + (specialOptions ? "Yes" : "No") +
                 "\nTotal Price" + String.format("%.2f", calculatePrice());
                 }
-
                 public static class Builder {
         private String name;
-        private double basePrice;
+        private double basePrice = 2.0;
         private Flavor flavor;
         private Size size;
         private ContainerType container;
-        private List<Toppings> toppings;
-        private boolean specialOptions;
+        private List<Toppings> toppings = new ArrayList<>();
+        private boolean specialOptions = false;
 
-        public Builder(String name, double basePrice) {
+        public Builder name(String name) {
             this.name = name;
-            this.basePrice = basePrice;
+            return this;
         }
 
+        public Builder basePrice(double price){
+            this.basePrice = price;
+            return this;
+        }
         public Builder flavor(Flavor flavor) {
             this.flavor = flavor;
             return this;
@@ -131,13 +135,13 @@ public class IceCream extends Item{
             return this;
         }
 
-        public Builder toppings(List<Toppings> toppings) {
-            this.toppings = toppings;
+        public Builder addTopping(Toppings topping) {
+            this.toppings.add(topping);
             return this;
         }
 
-        public Builder specialOptions(boolean specialOptions) {
-            this.specialOptions = specialOptions;
+        public Builder specialOptions(boolean special) {
+            this.specialOptions = special;
             return this;
         }
 
