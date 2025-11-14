@@ -11,7 +11,7 @@ public class Main {
         boolean running = true;
 
         System.out.println("========================");
-        System.out.println("     SHAMZ CREAMERY");
+        System.out.println("     Blair's CREAMERY");
         System.out.println("     🍨 ORDER APP 🍨");
         System.out.println("========================\n");
 
@@ -182,7 +182,7 @@ public class Main {
 
 
 
-        int quantity = getPositiveInt(scanner, "Quantity: ");
+        int quantity = getPositiveInt(scanner);
 
         IceCream ice = new IceCream.Builder()
                 .name(name)
@@ -209,7 +209,7 @@ public class Main {
         for (DrinkSize s : DrinkSize.values()) System.out.println(s.ordinal() + 1 + ". " + s);
         DrinkSize size = DrinkSize.values()[getValidInt(scanner, 1, DrinkSize.values().length) - 1];
 
-        int quantity = getPositiveInt(scanner, "Quantity: ");
+        int quantity = getPositiveInt(scanner);
 
         Drink drink = new Drink(type, size);
         drink.setQuantity(quantity);
@@ -226,7 +226,7 @@ public class Main {
         for (SideType s : SideType.values()) System.out.println(s.ordinal() + 1 + ". " + s);
         SideType type = SideType.values()[getValidInt(scanner, 1, SideType.values().length) - 1];
 
-        int quantity = getPositiveInt(scanner, "Quantity: ");
+        int quantity = getPositiveInt(scanner);
 
         Side side = new Side(type);
         side.setQuantity(quantity);
@@ -254,10 +254,10 @@ public class Main {
         }
     }
 
-    private static int getPositiveInt(Scanner scanner, String prompt) {
+    private static int getPositiveInt(Scanner scanner) {
         int qty;
         while (true) {
-            System.out.print(prompt);
+            System.out.print("Quantity: ");
             if (scanner.hasNextInt()) {
                 qty = scanner.nextInt();
                 if (qty > 0) {
