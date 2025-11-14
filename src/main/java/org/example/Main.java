@@ -10,7 +10,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        System.out.println("Welcome to the Shamz Creamery");
+        System.out.println("========================");
+        System.out.println("     SHAMZ CREAMERY");
+        System.out.println("     🍨 ORDER APP 🍨");
+        System.out.println("========================\n");
 
         while (running) {
             switch (showHomeScreen(scanner)) {
@@ -27,7 +30,11 @@ public class Main {
 
     //  Home Screen
     private static int showHomeScreen(Scanner scanner) {
-        System.out.println("\n--- HOME SCREEN ---");
+        System.out.println(
+                "\n============================\n" +
+                        "       🏠 HOME MENU 🏠\n" +
+                        "============================"
+        );
         System.out.println("1) New Order");
         System.out.println("0) Exit");
         System.out.print("Choose an option: ");
@@ -40,7 +47,11 @@ public class Main {
         boolean ordering = true;
 
         while (ordering) {
-            System.out.println("\n--- ORDER SCREEN ---");
+            System.out.println(
+                    "\n============================\n" +
+                            "       🧾 ORDER MENU 🧾\n" +
+                            "============================"
+            );
             displayOrder(order); // Show newest entries first
 
             System.out.println("\n1) Add Ice Cream");
@@ -99,9 +110,14 @@ public class Main {
         }
     }
 
-    // ------------------- Add Ice Cream -------------------
+
+    //Add Ice Cream
     private static void addIceCream(Scanner scanner, Order order) {
-        System.out.println("\n--- Add Ice Cream ---");
+        System.out.println(
+                "\n============================\n" +
+                        "  🍨 ICE CREAM MENU 🍨\n" +
+                        "============================"
+        );
 
         System.out.print("Name: ");
         String name = scanner.nextLine().trim();
@@ -127,14 +143,31 @@ public class Main {
         // Toppings
         List<Toppings> toppings = new ArrayList<>();
         boolean addingToppings = true;
+
         while (addingToppings) {
             System.out.println("Add a topping? (y/n)");
             String add = scanner.nextLine().trim().toLowerCase();
+
             if (add.equals("y")) {
                 ToppingType[] tTypes = ToppingType.values();
-                System.out.println("Select topping:");
-                for (int i = 0; i < tTypes.length; i++) System.out.println((i + 1) + ") " + tTypes[i]);
+
+                System.out.println("Premium Toppings:");
+                for (int i = 0; i < tTypes.length; i++) {
+                    if (tTypes[i].isPremium()) {
+                        System.out.println((i + 1) + ") " + tTypes[i]);
+                    }
+                }
+
+                System.out.println("\nRegular Toppings:");
+                for (int i = 0; i < tTypes.length; i++) {
+                    if (!tTypes[i].isPremium()) {
+                        System.out.println((i + 1) + ") " + tTypes[i]);
+                    }
+                }
+
+                System.out.println("\nSelect topping:");
                 ToppingType selected = tTypes[getValidInt(scanner, 1, tTypes.length) - 1];
+
 
                 System.out.println("Extra portion? (y/n)");
                 boolean extra = scanner.nextLine().trim().equalsIgnoreCase("y");
@@ -146,6 +179,7 @@ public class Main {
                 System.out.println("Please enter 'y' or 'n'.");
             }
         }
+
 
 
         int quantity = getPositiveInt(scanner, "Quantity: ");
@@ -163,7 +197,7 @@ public class Main {
         System.out.println("Ice Cream added!");
     }
 
-    // ------------------- Add Drink -------------------
+    // Add Drink
     private static void addDrink(Scanner scanner, Order order) {
         System.out.println("\n--- Add Drink ---");
 
@@ -184,7 +218,7 @@ public class Main {
         System.out.println("Drink added!");
     }
 
-    // ------------------- Add Side -------------------
+    // Add Side
     private static void addSide(Scanner scanner, Order order) {
         System.out.println("\n--- Add Side ---");
 
@@ -201,7 +235,7 @@ public class Main {
         System.out.println("Side added!");
     }
 
-    // ------------------- Input Utilities -------------------
+
     private static int getValidInt(Scanner scanner, int min, int max) {
         int choice;
         while (true) {

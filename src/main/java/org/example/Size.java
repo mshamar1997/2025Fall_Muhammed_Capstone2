@@ -31,6 +31,6 @@ public enum Size {
     }
     @Override
     public String toString() {
-        return displayName;
+        return displayName + " (+$" + String.format("%.2f", basePrice) + ")";
     }
 }

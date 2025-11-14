@@ -24,6 +24,6 @@ public enum ContainerType {
 
     @Override
     public String toString() {
-        return displayName;
+        return displayName + " (+$" + String.format("%.2f", extraCost) + ")";
     }
 }

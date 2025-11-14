@@ -1,7 +1,7 @@
 package org.example;
 
 public class Side extends Item {
-    private SideType type;
+    private final SideType type;
 
     public Side(SideType type) {
         // Pass name and base price up to Item
