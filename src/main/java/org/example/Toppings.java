@@ -2,11 +2,11 @@ package org.example;
 
 public class Toppings {
     private ToppingType type;
-    private boolean isExtra;
+    private boolean extraPortion;
 
-    public Toppings(ToppingType type, boolean isExtra) {
+    public Toppings(ToppingType type, boolean extraPortion) {
         this.type = type;
-        this.isExtra = isExtra;
+        this.extraPortion = extraPortion;
     }
     public String getDisplayName() {
         return type.getDisplayName();
@@ -25,23 +25,23 @@ public class Toppings {
         this.type = type;
     }
 
-    public boolean isExtra() {
+    public boolean isExtraPortion() {
 
-        return isExtra;
+        return extraPortion;
     }
 
-    public void setExtra(boolean extra) {
+    public void setExtraPortion(boolean extra) {
 
-        isExtra = extra;
+       this.extraPortion = extra;
     }
     public double getPrice() {
         double basePrice = type.getPrice();
-        return isExtra ? basePrice * 1.5 : basePrice;
+        return extraPortion ? basePrice * 1.5 : basePrice;
 
     }
     @Override
     public String toString() {
-        return type.getDisplayName() + (isExtra ? " (extra)" : "")
+        return type.getDisplayName() + (extraPortion ? " (extra)" : "")
                 + " - $" + String.format("%.2f", getPrice());
     }
     }

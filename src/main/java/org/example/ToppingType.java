@@ -11,7 +11,7 @@ public enum ToppingType {
     //regular toppings
     SPRINKLES("Sprinkles", .50, false),
     PEANUTS("Peanuts", .50, false),
-    GUMMY_BEARS("gummyBears", .50, false ),
+    GUMMY_BEARS("Gummy Bears", .50, false ),
     WHIPPED_CREAM("Whipped Cream", .50, false),
     CHOCOLATE_CHIPS("Chocolate Chips", .50, false);
 
@@ -39,6 +39,6 @@ public enum ToppingType {
 
     @Override
     public String toString() {
-        return displayName + " ($" + price + ")";
+        return displayName + " ($" + String.format("%.2f",price )+ ")";
     }
 }

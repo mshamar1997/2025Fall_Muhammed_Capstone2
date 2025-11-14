@@ -9,9 +9,6 @@ import java.time.format.DateTimeFormatter;
 public class FileManager {
     private static final String FILE_PATH = "Receipt.csv";
 
-    /**
-     * Save an order to a CSV file.
-     */
     public static void saveOrder(Order order) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         String timestamp = LocalDateTime.now().format(formatter);
@@ -21,28 +18,12 @@ public class FileManager {
             writer.write("===== ORDER =====\n");
             writer.write("Time: " + timestamp + "\n");
 
-            // Ice creams
-            writer.write("Ice Creams:\n");
-            for (IceCream iceCream : order.getIceCreams()) {
-                writer.write("- " + iceCream.getName() + " | $" + String.format("%.2f", iceCream.calculatePrice()) + "\n");
+            // 3️⃣ Loop through items and use polymorphic method instead of instanceof
+            for (Item item : order.getItems()) {
+                writer.write(item.toReceiptString() + "\n"); // 4️⃣ cleaner and extendable
             }
 
-            // Sides
-            writer.write("Sides:\n");
-            for (SideType side : order.getSides().keySet()) {
-                int qty = order.getSides().get(side);
-                writer.write("- " + side.getDisplayName() + " x" + qty + " | $" + String.format("%.2f", side.getBasePrice() * qty) + "\n");
-            }
-
-            // Drinks
-            writer.write("Drinks:\n");
-            for (DrinkType drink : order.getDrinks().keySet()) {
-                int qty = order.getDrinks().get(drink);
-                writer.write("- " + drink.getDisplayName() + " x" + qty + " | $" + String.format("%.2f", drink.getBasePrice() * qty) + "\n");
-            }
-
-            writer.write("Total: $" + String.format("%.2f", order.calculateTotal()) + "\n");
-            writer.write("\n"); // blank line between orders
+            writer.write("Total: $" + String.format("%.2f", order.calculateTotal()) + "\n\n");
 
             System.out.println("Order saved to " + FILE_PATH);
 
@@ -51,6 +32,11 @@ public class FileManager {
         }
     }
 }
+
+
+
+
+
 
 
 

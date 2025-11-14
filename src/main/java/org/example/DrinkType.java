@@ -24,6 +24,6 @@ public enum DrinkType {
 
     @Override
     public String toString() {
-        return displayName + " ($" + basePrice + ")";
+        return displayName + " ($" + String.format("%.2f", basePrice) + ")";
     }
 }
